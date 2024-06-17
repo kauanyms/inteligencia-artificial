@@ -26,18 +26,11 @@ const perguntas = [
         "Me preocupo com as pessoas que perderão seus empregos para máquinas e defendem a importância de proteger os trabalhadores."
     ]
 },
-{ 
-    Enunciado: "Ao final da discussão, você precisou criar uma imagem no computador que representasse o que pensa sobre IA. E agora?",
-    Alternativas: [
-        "alternativa 1",
-        "alternativa 2"
-    ]
-},
-{ 
-    Enunciado: "Pergunta 1",
-    Alternativas: [
+{
+    enunciado: "Ao final da discussão, você precisou criar uma imagem no computador que representasse o que pensa sobre IA. E agora?",
+    alternativas: [
         "Criar uma imagem utilizando uma plataforma de design como o Paint.",
-        "Criar uma imagem utilizando uma plataforma de design como o Paint."
+        "Criar uma imagem utilizando um gerador de imagem de IA."
     ]
 },
 {
@@ -48,3 +41,22 @@ const perguntas = [
     ]
 }
 ];
+
+let atual = 0;
+let perguntaAtual;
+
+function mostraPergunta() {
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraPergunta()
+}
+
+function mostraAlternativa(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativa.textContent = alternativa;
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+mostraPergunta()
